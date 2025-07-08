@@ -14,33 +14,28 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #e2e2e2, #c9d6ff);
-  overflow: hidden;
-  padding: 20px;
+  overflow: hidden; /* Add this to avoid scroll issues */
 }
 
 .auth-container {
   position: relative;
-  width: 90%;
-  max-width: 768px;
-  min-height: 500px;
+  width: 768px;
+  min-height: 480px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-/* Forms */
 .form-container {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 100%;
-  max-width: 50%;
-  padding: 40px 20px;
+  width: 50%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,15 +100,19 @@
   color: #555;
   font-size: 16px;
   flex-shrink: 0;
+  align-self: center;
 }
 
 .auth-input-field input {
-  border: none;
+  border: none !important;
   outline: none;
   background: transparent;
   font-size: 14px;
   width: 100%;
-  padding: 5px;
+  line-height: 1.6;
+  padding: 5px !important;
+  margin: 0;
+  transform: translateY(1px);
 }
 
 .auth-btn {
@@ -136,6 +135,9 @@
 }
 
 .auth-btn.ghost {
+  /* background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff; */
   margin-left: 20px;
 }
 
@@ -155,76 +157,67 @@
   text-align: center;
 }
 
-/* Toggle section */
 .toggle-container {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1000;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
 }
 
-@media screen and (min-width: 768px) {
-  .toggle-container {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1000;
-    transition: all 0.6s ease-in-out;
-    border-radius: 150px 0 0 100px;
-  }
-
-  .auth-signup-mode .toggle-container {
-    transform: translateX(-100%);
-    border-radius: 0 150px 100px 0;
-  }
-
-  .toggle {
-    background: linear-gradient(to right, #5c6bc0, #2da0a8);
-    height: 100%;
-    width: 200%;
-    position: relative;
-    left: -100%;
-    transition: all 0.6s ease-in-out;
-    color: #fff;
-  }
-
-  .auth-signup-mode .toggle {
-    transform: translateX(50%);
-  }
-
-  .toggle-panel {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 30px;
-    text-align: center;
-    transition: all 0.6s ease-in-out;
-  }
-
-  .toggle-left {
-    transform: translateX(-200%);
-  }
-
-  .auth-signup-mode .toggle-left {
-    transform: translateX(0);
-  }
-
-  .toggle-right {
-    right: 0;
-    transform: translateX(0);
-  }
-
-  .auth-signup-mode .toggle-right {
-    transform: translateX(200%);
-  }
+.auth-signup-mode .toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
 }
 
-/* Loader */
+.toggle {
+  background: linear-gradient(to right, #5c6bc0, #2da0a8);
+  height: 100%;
+  width: 200%;
+  position: relative;
+  left: -100%;
+  transition: all 0.6s ease-in-out;
+  color: #fff;
+}
+
+.auth-signup-mode .toggle {
+  transform: translateX(50%);
+}
+
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  text-align: center;
+  transition: all 0.6s ease-in-out;
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+}
+
+.auth-signup-mode .toggle-left {
+  transform: translateX(0);
+}
+
+.toggle-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.auth-signup-mode .toggle-right {
+  transform: translateX(200%);
+}
+
 .loader-overlay {
   position: fixed;
   top: 0;
@@ -238,11 +231,9 @@
   z-index: 100;
 }
 
-/* OTP */
 .otp-input-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0 20px 0;
 }
@@ -268,21 +259,21 @@
   margin-bottom: 12px;
 }
 
-/* Flip effect */
+/* FLIP EFFECT */
 .flip-container {
   perspective: 1200px;
-  width: 100%;
-  max-width: 768px;
-  height: auto;
+  width: 768px;
+  height: 480px;
   position: relative;
 }
 
 .flipper {
   width: 100%;
+  height: 100%;
+  position: relative;
   transition: 0.6s;
   transform-style: preserve-3d;
-  min-height: 500px;
-}
+}   
 
 .flip-container.flip .flipper {
   transform: rotateY(180deg);
@@ -294,12 +285,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 20px;
   backface-visibility: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .front {
@@ -307,13 +296,14 @@
   transform: rotateY(0deg);
 }
 
+
 .back {
   z-index: 1;
   transform: rotateY(180deg);
   background-color: #fff;
 }
 
-/* Admin login */
+/* Admin login style in back */
 .back .auth-container {
   width: 100%;
   padding: 40px;
@@ -335,7 +325,7 @@
   background-color: #248993;
 }
 
-/* Admin login wrapper */
+/* Centered Admin Login Page */
 .admin-login-wrapper {
   width: 100%;
   height: 100%;
@@ -365,45 +355,18 @@
 .admin-form-container .auth-input-field {
   width: 100%;
   margin: 10px 0;
+
 }
 
 .admin-form-container .auth-btn {
   width: 100%;
+ 
 }
-
-.admin-btn-container {
+.admin-btn-container{
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 20px;
 }
 
-/* Responsive tweaks */
-@media screen and (max-width: 480px) {
-  .auth-title {
-    font-size: 20px;
-  }
-
-  .auth-input-field {
-    padding: 10px;
-    font-size: 13px;
-  }
-
-  .auth-btn {
-    font-size: 11px;
-    padding: 8px 30px;
-  }
-
-  .auth-page {
-    align-items: flex-start;
-  }
-
-  .admin-form-container {
-    padding: 20px;
-  }
-
-  .admin-btn-container {
-    flex-direction: column;
-  }
-}
