@@ -93,7 +93,9 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@(aec\.edu\.in|acet\.ac\.in|adityauniversity\.in|acoe\.edu\.in)$/;
-    const passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.*\d).{8,}$/;
+    // const passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.*\d).{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
 
     if (!emailRegex.test(signupEmail)) {
       setSignupError("Email must end with aec.edu.in, acet.ac.in, or adityauniversity.in or acoe.edu.in");
